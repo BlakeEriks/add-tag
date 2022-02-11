@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import CloseButton from "./CloseButton"
+import astronauts from "./astronauts";
 import './index.css';
 
 /* Params For Animating Suggestion Height */
@@ -47,8 +48,7 @@ const AddTag = () => {
   /* Fetch Tag Names On Load */
   useEffect(() => {
     const fetchTagOptions = async () => {
-      const res = await fetch("http://api.open-notify.org/astros.json")
-      const tags = (await res.json()).people.map(person => person.name)
+      const tags = astronauts.people.map(person => person.name)
       setTagOptions(tags)
       setFilteredOptions(tags.slice(2))
       setTags(tags.slice(0,2))
